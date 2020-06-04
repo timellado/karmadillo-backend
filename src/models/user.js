@@ -18,7 +18,7 @@ const UserSchema  = new mongoose.Schema({
         type: Date,
         required: true
     },
-    profilePic: Image,
+    profilePic: String,
     verified: {
         type: Boolean,
         default: false

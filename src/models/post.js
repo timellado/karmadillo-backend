@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 // Define the movie schema
 const PostSchema  = new mongoose.Schema({
-    postPic: Image,
+    postPic: String,
     description: {
         type: String,
         required: true
