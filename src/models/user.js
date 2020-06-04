@@ -13,7 +13,31 @@ const UserSchema  = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    birthData: {
+        type: Date,
+        required: true
+    },
+    profilePic: {
+        type: Image,
+        required: true
+    },
+    verified: {
+        type: Boolean,
+        required: true
+    },
+    premium: {
+        type: Boolean,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    private: {
+        type: Boolean,
+        required: true
+    },
 });
 
 UserSchema.set('versionKey', false);
