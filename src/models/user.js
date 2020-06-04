@@ -14,21 +14,18 @@ const UserSchema  = new mongoose.Schema({
         required: true,
         unique: true
     },
-    birthData: {
+    birthDate: {
         type: Date,
         required: true
     },
-    profilePic: {
-        type: Image,
-        required: true
-    },
+    profilePic: Image,
     verified: {
         type: Boolean,
-        required: true
+        default: false
     },
     premium: {
         type: Boolean,
-        required: true
+        default: false
     },
     email: {
         type: String,
@@ -36,7 +33,7 @@ const UserSchema  = new mongoose.Schema({
     },
     private: {
         type: Boolean,
-        required: true
+        default: false
     },
 });
 
