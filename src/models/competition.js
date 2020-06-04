@@ -16,7 +16,15 @@ const CompetitionSchema  = new mongoose.Schema({
     },
     start_time: Date,
     end_time: Date,
-    goal: String
+    goal: String,
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "user"
+    },
+    participants: [{
+        type: Schema.Types.ObjectId,
+        ref: "user"
+    }]
 });
 
 CompetitionSchema.set('versionKey', false);
