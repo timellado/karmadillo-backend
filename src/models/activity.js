@@ -23,8 +23,3 @@ ActivitySchema.set('timestamps', true);
 module.exports = mongoose.model('Activity', ActivitySchema);
 
 var Activity = mongoose.model('Activity', ActivitySchema);
-
-Activity.create({ name: 'test name', category: 'test cat'  }, function (err, small) {
-    if (err) return handleError(err);
-    // saved!
-  });
