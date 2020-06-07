@@ -18,11 +18,11 @@ const CompetitionSchema  = new mongoose.Schema({
     end_time: Date,
     goal: String,
     owner: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "user"
     },
     participants: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "user"
     }]
 });

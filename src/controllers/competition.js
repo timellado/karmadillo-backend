@@ -1,6 +1,7 @@
 "use strict";
 
 const CompetitionModel = require('../models/competition');
+const UserModel = require('../models/user');
 
 // need params:{userId:CurrentUserId, participants:participantsId}
 const create = async (req, res) => {
@@ -11,17 +12,19 @@ const create = async (req, res) => {
 
     try {
         // Look for the owner
-        const { userId } = req.params;
-        const owner = user.findById(userId);
+        const { userId } = req.body;
+        const owner = await UserModel.findById(userId);
         // Look for the participants
-        const { participants } = req.params;
+        let participants  = JSON.parse(req.body.participants);
 
-        let competition = await CompetitionModel.create(req.body);
+        let competition = new CompetitionModel({
+            name: req.body.name,
+            tag: req.body.tag
+        })
         competition.owner = owner;
-
         for (let index = 0; index < participants.length; index++) {
             const participantId = participants[index];
-            const participant = user.findById(participantId);
+            const participant = await UserModel.findById(participantId);
             competition.participants.push(participant)
         }
         // Save the competition
@@ -36,7 +39,21 @@ const create = async (req, res) => {
     }
 };
 
+const list  = async (req, res) => {
+    try {
+      let competitions = await CompetitionModel.find({}).exec();
+  
+      return res.status(200).json(competitions);
+    } catch(err) {
+      return res.status(500).json({
+        error: 'Internal server error',
+        message: err.message
+      });
+    }
+  };
+
 
 module.exports = {
-    create
+    create,
+    list
 };

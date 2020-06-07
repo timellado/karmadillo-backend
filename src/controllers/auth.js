@@ -52,14 +52,18 @@ const register = async (req, res) => {
         message: 'The request body must contain a username property'
     });
 
-    const user = Object.assign(req.body, { password: bcrypt.hashSync(req.body.password, 8) });
-
+    let hash_password = bcrypt.hashSync(req.body.password, 8);
+    const newUser = new UserModel({
+        username: req.body.username,
+        password: hash_password,
+        email: req.body.username
+    })
     try {
-        let retUser = await UserModel.create(user);
-
+        // let retUser = await UserModel.create(user);
+        newUser.save();
         // if user is registered without errors
         // create a token
-        const token = jwt.sign({ id: retUser._id, username: retUser.username }, config.JwtSecret, {
+        const token = jwt.sign({ id: newUser._id, username: newUser.username }, config.JwtSecret, {
             expiresIn: 86400 // expires in 24 hours
         });
 

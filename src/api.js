@@ -7,7 +7,12 @@ const helmet     = require('helmet');
 const middlewares = require('./middlewares');
 
 const auth  = require('./routes/auth');
-const movie = require('./routes/movie');
+const movie  = require('./routes/movie');
+const user = require('./routes/user');
+const competition = require('./routes/competition');
+// const comment = require('./routes/comment');
+// const post = require('./routes/post');
+// const activity = require('./routes/activity');
 
 
 const api = express();
@@ -28,7 +33,12 @@ api.get('/', (req, res) => {
 
 // API routes
 api.use('/auth'  , auth);
-api.use('/movies', movie);
+api.use('/movies'  , movie);
+// api.use('/posts', post);
+api.use('/users', user);
+// api.use('/activities', activity);
+// api.use('/comments', comment);
+api.use('/competitions', competition);
 
 
 module.exports = api;
