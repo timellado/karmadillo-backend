@@ -11,7 +11,6 @@ const create = async (req, res) => {
     });
 
     try {
-   req.userId
       // Look for the user
       const user = await UserModel.findById(req.userId);
      
