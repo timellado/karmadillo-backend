@@ -15,8 +15,8 @@ const UserSchema  = new mongoose.Schema({
         unique: true
     },
     birthDate: {
-        type: Date,
-        required: true
+        type: Date
+        // required: true
     },
     profilePic: String,
     verified: {
@@ -28,12 +28,12 @@ const UserSchema  = new mongoose.Schema({
         default: false
     },
     email: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        unique: true,
-        required: true,
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+        type: String
+        // trim: true,
+        // lowercase: true
+        // unique: true,
+        // required: true,
+        // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
     private: {
         type: Boolean,
