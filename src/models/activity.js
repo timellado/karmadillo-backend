@@ -26,7 +26,8 @@ const ActivitySchema  = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Competition',
         reqired: false
-    }
+    },
+    tag: [String],
 });
 
 ActivitySchema.set('versionKey', false);
@@ -35,5 +36,3 @@ ActivitySchema.set('timestamps', true);
 
 // Export the Activity model
 module.exports = mongoose.model('Activity', ActivitySchema);
-
-var Activity = mongoose.model('Activity', ActivitySchema);
