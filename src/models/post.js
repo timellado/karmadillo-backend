@@ -12,7 +12,12 @@ const PostSchema  = new mongoose.Schema({
     },
     comments: [
         { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }
-      ]
+    ],
+    activity: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Activity',
+        reqired: true
+    }
 });
 
 PostSchema.set('versionKey', false);

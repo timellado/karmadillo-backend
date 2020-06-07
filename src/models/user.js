@@ -41,7 +41,10 @@ const UserSchema  = new mongoose.Schema({
     },
     comments: [
         { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }
-      ]
+    ],
+    activities: [
+        { type: mongoose.Schema.Types.ObjectId, ref: 'Activity' }
+    ]
 });
 
 UserSchema.set('versionKey', false);
