@@ -1,17 +1,18 @@
 "use strict";
 
-// const express = require('express');
-// const router = express.Router();
 
-// const middlewares = require('../middlewares');
-// const MovieController = require('../controllers/movie');
+const express = require('express');
+const router = express.Router();
+
+const middlewares = require('../middlewares');
+const ActivityController = require('../controllers/activity');
+
+router.get('/', ActivityController.list); // List all activities
+router.post('/', middlewares.checkAuthentication, ActivityController.create); // Create a new activity
+router.get('/:id', ActivityController.read); // Read a activity by Id
+router.put('/:id', middlewares.checkAuthentication, ActivityController.update); // Update a act by Id
+router.delete('/:id', middlewares.checkAuthentication, ActivityController.remove); // Delete a activity by Id
 
 
-// router.get('/', MovieController.list); // List all movies
-// router.post('/', middlewares.checkAuthentication, MovieController.create); // Create a new movie
-// router.get('/:id', MovieController.read); // Read a movie by Id
-// router.put('/:id', middlewares.checkAuthentication, MovieController.update); // Update a movie by Id
-// router.delete('/:id', middlewares.checkAuthentication, MovieController.remove); // Delete a movie by Id
 
-
-// module.exports = router;
+module.exports = router;

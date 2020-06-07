@@ -9,6 +9,14 @@ const PostSchema  = new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    comments: [
+        { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }
+    ],
+    activity: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Activity',
+        reqired: true
     }
 });
 

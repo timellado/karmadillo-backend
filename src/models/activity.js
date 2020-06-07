@@ -13,7 +13,21 @@ const ActivitySchema  = new mongoose.Schema({
         type: String,
         required: true
     },
-    tag: [String]
+    user: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User',
+    },
+    post: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Post',
+        required: false
+    },
+    competition: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Competition',
+        reqired: false
+    },
+    tag: [String],
 });
 
 ActivitySchema.set('versionKey', false);

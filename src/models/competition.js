@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 
 // Define the movie schema
-const CompetitionSchema  = new mongoose.Schema({
+const CompetitionSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -24,6 +24,10 @@ const CompetitionSchema  = new mongoose.Schema({
     participants: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
+    }],
+    activities: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'activity'
     }]
 });
 
