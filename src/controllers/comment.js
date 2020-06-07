@@ -1,6 +1,7 @@
 "use strict";
 
 const CommentModel = require('../models/comment');
+const UserModel = require('../models/user');
 
 
 const create = async (req, res) => {
@@ -10,9 +11,16 @@ const create = async (req, res) => {
     });
 
     try {
+   req.userId
+      // Look for the user
+      const user = await UserModel.findById(req.userId);
+     
       let comment = await CommentModel.create(req.body);
+      comment.user = user;
+      await comment.save()
 
       return res.status(201).json(comment)
+
     } catch(err) {
       return res.status(500).json({
         error: 'Internal server error',
