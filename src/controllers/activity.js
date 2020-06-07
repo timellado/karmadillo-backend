@@ -1,6 +1,7 @@
 "use strict";
 
 const ActivityModel = require('../models/activity');
+const UserModel = require('../models/user');
 
 
 const create = async (req, res) => {
@@ -10,7 +11,12 @@ const create = async (req, res) => {
   });
 
   try {
+    // Look for current user
+    const user = await UserModel.findById(req.userId);
+
     let activity = await ActivityModel.create(req.body);
+    activity.user = user;
+    await activity.save()
 
     return res.status(201).json(activity)
   } catch(err) {
