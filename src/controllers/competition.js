@@ -12,16 +12,15 @@ const create = async (req, res) => {
 
     try {
         // Look for the owner
-        const { userId } = req.body;
-        const owner = await UserModel.findById(userId);
+        const owner = await UserModel.findById(req.userId);
         // Look for the participants
         let participants  = JSON.parse(req.body.participants);
 
         let competition = new CompetitionModel({
             name: req.body.name,
-            tag: req.body.tag
-        })
-        competition.owner = owner;
+            tag: req.body.tag,
+            owner: owner
+        });
         for (let index = 0; index < participants.length; index++) {
             const participantId = participants[index];
             const participant = await UserModel.findById(participantId);
