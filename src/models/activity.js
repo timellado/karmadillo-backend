@@ -13,7 +13,6 @@ const ActivitySchema  = new mongoose.Schema({
         type: String,
         required: true
     },
-    tag: [String]
 });
 
 ActivitySchema.set('versionKey', false);
@@ -22,3 +21,10 @@ ActivitySchema.set('timestamps', true);
 
 // Export the Activity model
 module.exports = mongoose.model('Activity', ActivitySchema);
+
+var Activity = mongoose.model('Activity', ActivitySchema);
+
+Activity.create({ name: 'test name', category: 'test cat'  }, function (err, small) {
+    if (err) return handleError(err);
+    // saved!
+  });

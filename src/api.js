@@ -8,7 +8,7 @@ const middlewares = require('./middlewares');
 
 const auth  = require('./routes/auth');
 const movie = require('./routes/movie');
-
+const activity = require('./routes/activity');
 
 const api = express();
 
@@ -29,6 +29,6 @@ api.get('/', (req, res) => {
 // API routes
 api.use('/auth'  , auth);
 api.use('/movies', movie);
-
+api.use('/activities', activity);
 
 module.exports = api;
