@@ -52,11 +52,22 @@ const register = async (req, res) => {
         message: 'The request body must contain a username property'
     });
 
+    if (!Object.prototype.hasOwnProperty.call(req.body, 'email')) return res.status(400).json({
+        error: 'Bad Request',
+        message: 'The request body must contain an email property'
+    });
+
+    if (!Object.prototype.hasOwnProperty.call(req.body, 'birth')) return res.status(400).json({
+        error: 'Bad Request',
+        message: 'The request body must contain a birth property'
+    });
+
     let hash_password = bcrypt.hashSync(req.body.password, 8);
     const newUser = new UserModel({
         username: req.body.username,
         password: hash_password,
-        email: req.body.username
+        email: req.body.email,
+        birthDate: req.body.birth
     })
     try {
         // let retUser = await UserModel.create(user);
