@@ -11,7 +11,7 @@ const create = async (req, res) => {
     });
 
     try {
-      // Look for the user
+      // Look for current user
       const user = await UserModel.findById(req.userId);
      
       let comment = await CommentModel.create(req.body);
