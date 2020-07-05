@@ -11,12 +11,12 @@ const create = async (req, res) => {
     });
 
     try {
-     // const { activityId } = req.body;
-    //  const activity = await ActivityModel.findById(activityId);
+      const { activityId } = req.body;
+      const activity = await ActivityModel.findById(activityId);
 
       let post = await PostModel.create(req.body);
 
-    //  post.activity = activity;
+      post.activity = activity;
 
       await post.save();
 
