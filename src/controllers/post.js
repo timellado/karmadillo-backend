@@ -5,7 +5,8 @@ const ActivityModel = require('../models/activity');
 
 
 const create = async (req, res) => {
-    if (Object.keys(req.body).length === 0) return res.status(400).json({
+
+  if (Object.keys(req.body).length === 0) return res.status(400).json({
         error: 'Bad Request',
         message: 'The request body is empty'
     });
@@ -31,7 +32,7 @@ const create = async (req, res) => {
 
 const read = async (req, res) => {
   try {
-    let post = await PostModel.findById(req.params.id).exec();
+    let post = await PostModel.findById(req.params.id).populate('comments').populate('activity').populate('likes').exec();
 
     if (!post) return res.status(404).json({
       error: 'Not Found',
@@ -85,7 +86,7 @@ const remove = async (req, res) => {
 
 const list  = async (req, res) => {
   try {
-    let posts = await PostModel.find({}).exec();
+    let posts = await PostModel.find({}).populate('activity').populate('comments').populate('likes').exec();
 
     return res.status(200).json(posts);
   } catch(err) {
