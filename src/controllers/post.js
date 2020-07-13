@@ -31,7 +31,12 @@ const create = async (req, res) => {
 
 const read = async (req, res) => {
   try {
+    console.log("leyendo post")
     let post = await PostModel.findById(req.params.id).exec();
+    let activity = await ActivityModel.findById(await post.activity).exec();
+    let creator = await ActivityModel.findById(await post.activity.user).exec();
+    post.activity = activity;
+    post.activity.user = creator;
 
     if (!post) return res.status(404).json({
       error: 'Not Found',
