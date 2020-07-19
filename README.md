@@ -1,6 +1,6 @@
-# sebamaster-movie-backend application
+# Karmadillo-backend application
 
-sebamaster-movie-frontend application can be found [here](https://github.com/sebischair/sebamaster-movie-frontend)
+Karmadillo-frontend application can be found [here](https://github.com/timellado/karmadillo-frontend)
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ Just for the backend application:
 
 Go to your project root folder via command line
 ```
-cd path/to/workspace/sebamaster-movie-backend
+cd path/to/workspace/karmadillo-backend
 ```
 
 **Install node dependencies**
@@ -42,7 +42,7 @@ mongorestore dump/
 This variables are based in your local configuration
 ```bash
 export PORT=3000
-export MONGODB_URI="mongodb://localhost:27017/moviedb"
+export MONGODB_URI="mongodb://localhost:27017/karmadillodb"
 export JWT_SECRET="very secret secret"
 ```
 

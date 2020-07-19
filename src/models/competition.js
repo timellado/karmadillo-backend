@@ -16,6 +16,7 @@ const CompetitionSchema = new mongoose.Schema({
     },
     start_time: Date,
     end_time: Date,
+<<<<<<< HEAD
     goal: String,
     owner: {
         type: mongoose.Schema.Types.ObjectId,
@@ -29,6 +30,9 @@ const CompetitionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'activity'
     }]
+=======
+    goal: String
+>>>>>>> master
 });
 
 CompetitionSchema.set('versionKey', false);
