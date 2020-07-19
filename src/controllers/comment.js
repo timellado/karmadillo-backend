@@ -30,14 +30,14 @@ const create = async (req, res) => {
 
 const read = async (req, res) => {
   try {
-    let comment = await CommentModel.findById(req.params.id).exec();
+    let comments = await CommentModel.find({"post": req.params.id}).exec();
 
-    if (!comment) return res.status(404).json({
+    if (!comments) return res.status(404).json({
       error: 'Not Found',
-      message: `comment not found`
+      message: `comments not found`
     });
 
-    return res.status(200).json(comment)
+    return res.status(200).json(comments)
   } catch(err) {
     return res.status(500).json({
       error: 'Internal Server Error',
