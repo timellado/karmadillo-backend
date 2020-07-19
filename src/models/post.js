@@ -8,7 +8,21 @@ const PostSchema  = new mongoose.Schema({
     postPic: String,
     description: {
         type: String,
+<<<<<<< HEAD
+    },
+    comments: [
+        { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }
+    ],
+    likes: [
+        { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    ],
+    activity: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Activity',
+        reqired: true
+=======
         required: true
+>>>>>>> master
     }
 });
 
