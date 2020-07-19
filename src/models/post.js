@@ -8,7 +8,6 @@ const PostSchema  = new mongoose.Schema({
     postPic: String,
     description: {
         type: String,
-        required: true
     },
     comments: [
         { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }
